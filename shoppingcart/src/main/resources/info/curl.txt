@@ -1,0 +1,29 @@
+// barnbarns access token = 81c76eb8-b52f-44c3-b9b8-a9d299e3c9bb
+
+// get barnbarn access code
+curl -X POST --user "lambda-client:lambda-secret" -d "grant_type=password&username=barnbarn&password=LambdaLlama" https://jren-shoppingcart.herokuapp.com/login
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   162    0   104  100    58     43     24  0:00:02  0:00:02 --:--:--    67
+{"access_token":"81c76eb8-b52f-44c3-b9b8-a9d299e3c9bb","token_type":"bearer","scope":"read write trust"}
+
+// users/users
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 81c76eb8-b52f-44c3-b9b8-a9d299e3c9bb" https://jren-shoppingcart.herokuapp.com/users/users
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1082    0  1082    0     0   1418      0 --:--:-- --:--:-- --:--:--  1416
+[{"userid":1,"username":"barnbarn","comments":"","carts":[{"cartid":1,"products":[{"product":{"productid":1,"name":"PEN","price":2.5,"description":"MAKES WORDS","comments":""},"quantity":4,"comments":""},{"product":{"productid":2,"name":"PENCIL","price":1.5,"description":"DOES MATH","comments":""},"quantity":3,"comments":""},{"product":{"productid":3,"name":"COFFEE","price":4.0,"description":"EVERYONE NEEDS COFFEE","comments":""},"quantity":2,"comments":""}]},{"cartid":2,"products":[{"product":{"productid":3,"name":"COFFEE","price":4.0,"description":"EVERYONE NEEDS COFFEE","comments":""},"quantity":1,"comments":""}]}],"roles":[{"role":{"roleid":1,"name":"ADMIN"}}]},{"userid":2,"username":"cinnamon","comments":"","carts":[],"roles":[{"role":{"roleid":1,"name":"ADMIN"}},{"role":{"roleid":2,"name":"USER"}}]},{"userid":3,"username":"stumps","comments":"","carts":[{"cartid":3,"products":[{"product":{"productid":3,"name":"COFFEE","price":4.0,"description":"EVERYONE NEEDS COFFEE","comments":""},"quantity":17,"comments":""}]}],"roles":[{"role":{"roleid":2,"name":"USER"}}]}]
+
+// users/myinfo
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 81c76eb8-b52f-44c3-b9b8-a9d299e3c9bb" https://jren-shoppingcart.herokuapp.com/users/myinfo
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   175    0   175    0     0    441      0 --:--:-- --:--:-- --:--:--   440
+{"password":null,"username":"barnbarn","authorities":[{"authority":"ROLE_ADMIN"}],"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true}
+
+// carts/user
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 81c76eb8-b52f-44c3-b9b8-a9d299e3c9bb" https://jren-shoppingcart.herokuapp.com/carts/user
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   774    0   774    0     0   1156      0 --:--:-- --:--:-- --:--:--  1156
+[{"cartid":1,"products":[{"product":{"productid":1,"name":"PEN","price":2.5,"description":"MAKES WORDS","comments":""},"quantity":4,"comments":""},{"product":{"productid":2,"name":"PENCIL","price":1.5,"description":"DOES MATH","comments":""},"quantity":3,"comments":""},{"product":{"productid":3,"name":"COFFEE","price":4.0,"description":"EVERYONE NEEDS COFFEE","comments":""},"quantity":2,"comments":""}],"user":{"userid":1,"username":"barnbarn","comments":"","roles":[{"role":{"roleid":1,"name":"ADMIN"}}]}},{"cartid":2,"products":[{"product":{"productid":3,"name":"COFFEE","price":4.0,"description":"EVERYONE NEEDS COFFEE","comments":""},"quantity":1,"comments":""}],"user":{"userid":1,"username":"barnbarn","comments":"","roles":[{"role":{"roleid":1,"name":"ADMIN"}}]}}]
